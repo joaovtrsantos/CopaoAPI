@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("CopaoAPI")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("UnitTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1f5c7363abdfbff37a5de7322b146ffcc078bc9")]
-[assembly: System.Reflection.AssemblyProductAttribute("CopaoAPI")]
-[assembly: System.Reflection.AssemblyTitleAttribute("CopaoAPI")]
+[assembly: System.Reflection.AssemblyProductAttribute("UnitTest")]
+[assembly: System.Reflection.AssemblyTitleAttribute("UnitTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
