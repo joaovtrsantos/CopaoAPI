@@ -400,3 +400,10 @@ FodyWeavers.xsd
 /UnitTest/obj/project.nuget.cache
 /UnitTest/obj/UnitTest.csproj.nuget.dgspec.json
 /CopaoAPI.sln
+/CopaoAPI/obj/CopaoAPI.csproj.nuget.g.props
+/CopaoAPI/obj/CopaoAPI.csproj.nuget.g.targets
+/CopaoAPI/obj/Debug/net8.0/CopaoAPI.csproj.AssemblyReference.cache
+/CopaoAPI/obj/project.assets.json
+/Infrastructure/obj/Infrastructure.csproj.nuget.g.props
+/Infrastructure/obj/Infrastructure.csproj.nuget.g.targets
+/Infrastructure/obj/project.assets.json
