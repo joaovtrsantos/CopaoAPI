@@ -15,7 +15,7 @@ namespace Domain.Entities
         public DateTime StartDate { get; set; }
         public int ChampionId { get; set; }
 
-        public Team? Champion { get; }
+        public virtual Team? Champion { get; }
 
     }
 }

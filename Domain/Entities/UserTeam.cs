@@ -9,6 +9,6 @@ namespace Domain.Entities
         public int TeamId { get; set; }
 
         public required virtual User Usuario { get; set; }
-        public required virtual Team? Time { get; set; }
+        public required virtual Team Time { get; set; }
     }
 }
