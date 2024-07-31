@@ -407,3 +407,11 @@ FodyWeavers.xsd
 /Infrastructure/obj/Infrastructure.csproj.nuget.g.props
 /Infrastructure/obj/Infrastructure.csproj.nuget.g.targets
 /Infrastructure/obj/project.assets.json
+/Application/obj/Application.csproj.nuget.g.props
+/Application/obj/project.assets.json
+/Domain/obj/Domain.csproj.nuget.g.props
+/Domain/obj/project.assets.json
+/IntegrationTest/obj/IntegrationTest.csproj.nuget.g.props
+/IntegrationTest/obj/project.assets.json
+/UnitTest/obj/project.assets.json
+/UnitTest/obj/UnitTest.csproj.nuget.g.props
