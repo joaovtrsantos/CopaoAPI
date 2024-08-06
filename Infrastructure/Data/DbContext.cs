@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Domain.Entities;
-using System.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Infrastructure.Data
 {
-    public class CopaoDbContext : IdentityDbContext
+    public class CopaoDbContext : IdentityDbContext<User>
     {
         private IConfiguration _configuration;
 

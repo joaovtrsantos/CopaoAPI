@@ -1,5 +1,6 @@
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -26,8 +27,9 @@ builder.Services.AddDbContext<CopaoDbContext>();
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
-    .AddEntityFrameworkStores<CopaoDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<CopaoDbContext>()
+    .AddDefaultTokenProviders();
 
 var app = builder.Build();
 
