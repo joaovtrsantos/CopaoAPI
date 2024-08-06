@@ -415,3 +415,4 @@ FodyWeavers.xsd
 /IntegrationTest/obj/project.assets.json
 /UnitTest/obj/project.assets.json
 /UnitTest/obj/UnitTest.csproj.nuget.g.props
+/Domain/obj/Domain.csproj.nuget.g.targets
