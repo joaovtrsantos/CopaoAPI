@@ -2,11 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using Domain.SeedWork;
 
 namespace Infrastructure.Data
 {
-    public class CopaoDbContext : IdentityDbContext<User>
+    public class CopaoDbContext : IdentityDbContext<User>, IUnitOfWork
     {
         private IConfiguration _configuration;
 
