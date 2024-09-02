@@ -6,7 +6,7 @@ using Domain.SeedWork;
 
 namespace Infrastructure.Data
 {
-    public class CopaoDbContext : IdentityDbContext<User>, IUnitOfWork
+    public class CopaoDbContext : DbContext, IUnitOfWork
     {
         private IConfiguration _configuration;
 
