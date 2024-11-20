@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Domain.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Domain.SeedWork;
 
 namespace Infrastructure.Data
