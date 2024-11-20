@@ -12,34 +12,34 @@ namespace CopaoAPI.Controllers
     {
         private readonly UserManager<User> _userManager = userManager;
 
-        [HttpPost("signup")]
-        public async Task<IActionResult> SignUp([FromBody] SignupUserRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPost("signup")]
+        //public async Task<IActionResult> SignUp([FromBody] SignupUserRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var user = new User
-            {
-                UserName = request.Username, // Utiliza o Email como nome de usuário
-                Email = request.Email,
-                Nick = request.Nickname,
-            };
+        //    var user = new User
+        //    {
+        //        UserName = request.Username, // Utiliza o Email como nome de usuário
+        //        Email = request.Email,
+        //        Nick = request.Nickname,
+        //    };
 
-            var result = await _userManager.CreateAsync(user, request.Password);
+        //    var result = await _userManager.CreateAsync(user, request.Password);
 
-            if (result.Succeeded)
-            {
-                return Ok(new { Message = "User created successfully" });
-            }
+        //    if (result.Succeeded)
+        //    {
+        //        return Ok(new { Message = "User created successfully" });
+        //    }
 
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
+        //    foreach (var error in result.Errors)
+        //    {
+        //        ModelState.AddModelError(string.Empty, error.Description);
+        //    }
 
-            return BadRequest(ModelState);
-        }
+        //    return BadRequest(ModelState);
+        //}
     }
 }

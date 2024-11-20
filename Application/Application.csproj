@@ -15,4 +15,11 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Helpers\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Models\Requests\" />
+    <Folder Include="Models\Responses\" />
+  </ItemGroup>
+
 </Project>

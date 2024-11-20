@@ -2,10 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Domain.Entities;
 using Domain.SeedWork;
+using Infrastructure.IdentityModels;
 
 namespace Infrastructure.Data
 {
-    public class CopaoDbContext : DbContext, IUnitOfWork
+    public class CopaoDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>, IUnitOfWork
     {
         private IConfiguration _configuration;
 
