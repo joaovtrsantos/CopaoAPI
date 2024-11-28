@@ -2,7 +2,7 @@
 
 namespace Application.DTOs
 {
-    public class LoginDTO
+    public class LoginUserDTO
     {
         [Required, EmailAddress]
         public string Email { get; set; } = string.Empty;

@@ -5,9 +5,9 @@ using Domain.SeedWork;
 
 namespace Infrastructure.Data
 {
-    public class CopaoDbContext : DbContext, IUnitOfWork
+    public class CopaoDbContext(IConfiguration configuration, DbContextOptions options) : DbContext(options), IUnitOfWork
     {
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
 
         public DbSet<User> User { get; set; }
         public DbSet<Team> Team { get; set; }
@@ -15,14 +15,9 @@ namespace Infrastructure.Data
         public DbSet<UserTeam> UserTeam { get; set; }
         public DbSet<TeamTournament> TeamTournament { get; set; }
 
-        public CopaoDbContext(IConfiguration configuration, DbContextOptions options) : base(options)
-        {
-            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = _configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException("Connection string is empty");
+            string connectionString = _configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException("Connection string is empty");
             optionsBuilder.UseMySQL(connectionString);
         }
     }
