@@ -1,23 +1,22 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Domain.Entities
+namespace Application.DTOs
 {
-    [Table("User")]
-    public class User : Base
+    public class RegisterUserDTO
     {
+        [Required]
         public string FirstName { get; set; } = string.Empty;
+        [Required]
         public string LastName { get; set; } = string.Empty;
+        [Required]
         public string UserName { get; set; } = string.Empty;
 
-        [JsonIgnore]
+        [Required, MinLength(8), DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
+        [Required, DataType(DataType.Password), Compare("Password")]
+        public string ConfirmPassword { get; set; } = string.Empty;
         [Required, EmailAddress]
         public string Email { get; set; } = string.Empty;
-        public string Nick { get; set; } = string.Empty;
-        public string? Rank { get; set; }
-        public string? Pix { get; set; }
     }
 }
