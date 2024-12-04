@@ -1,45 +1,28 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Domain.Entities;
-using Auth0.AuthenticationApi.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Application.Interfaces;
+using Application.DTOs;
 
 namespace CopaoAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
-    public class UserController(UserManager<User> userManager) : ControllerBase
+    public class UserController(IUserRepository userRepository) : ControllerBase
     {
-        private readonly UserManager<User> _userManager = userManager;
+        private readonly IUserRepository _userRepository = userRepository;
 
-        [HttpPost("signup")]
-        public async Task<IActionResult> SignUp([FromBody] SignupUserRequest request)
+        [HttpPost("login")]
+        public async Task<ActionResult<LoginResponse>> LoginUser(LoginUserDTO loginUserDTO)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var result = await _userRepository.LoginUserAsync(loginUserDTO);
+            return Ok(result);
+        }
 
-            var user = new User
-            {
-                UserName = request.Username, // Utiliza o Email como nome de usuário
-                Email = request.Email,
-                Nick = request.Nickname,
-            };
-
-            var result = await _userManager.CreateAsync(user, request.Password);
-
-            if (result.Succeeded)
-            {
-                return Ok(new { Message = "User created successfully" });
-            }
-
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
-
-            return BadRequest(ModelState);
+        [HttpPost("register")]
+        public async Task<ActionResult<LoginResponse>> RegisterUser(RegisterUserDTO registerUserDTO)
+        {
+            var result = await _userRepository.RegisterUserAsync(registerUserDTO);
+            return Ok(result);
         }
     }
 }

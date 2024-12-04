@@ -2,7 +2,7 @@
 
 namespace Application.Interfaces
 {
-    public interface IUser
+    public interface IUserRepository
     {
         Task<RegistrationResponse> RegisterUserAsync(RegisterUserDTO registerUserDTO);
         Task<LoginResponse> LoginUserAsync(LoginUserDTO loginUserDTO);
