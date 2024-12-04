@@ -1,9 +1,7 @@
 using Application.Interfaces;
-using Application.Models.Settings;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -21,7 +19,6 @@ builder.Services.AddAuthorization();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAuthentication(options =>
 {
