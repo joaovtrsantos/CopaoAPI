@@ -2,10 +2,10 @@
 
 namespace BirminghamBank.Customer.Domain.IRepository;
 
-public interface IBaseRepository<T> : IRepository<T> where T : BaseAuditableEntity
+public interface IBaseRepository<T>
 {
-    Task Add(T entity);
-    Task Update(T entity);
-    Task Remove(T entity);
-    Task<T?> GetByIdAsync(Guid id);
+    Task<T> AddAsync(T entity);
+    Task<T> UpdateAsync(T entity);
+    Task<T> RemoveAsync(T entity);
+    Task<T?> GetByIdAsync(int id);
 }
