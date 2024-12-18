@@ -1,7 +1,5 @@
-﻿using BirminghamBank.Customer.Domain.IRepository;
+﻿using Application.Interfaces;
 using Domain.Entities;
-using Domain.SeedWork;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data.Repositories

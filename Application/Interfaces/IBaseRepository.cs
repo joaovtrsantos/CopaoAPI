@@ -1,6 +1,4 @@
-﻿using Domain.SeedWork;
-
-namespace BirminghamBank.Customer.Domain.IRepository;
+﻿namespace Application.Interfaces;
 
 public interface IBaseRepository<T>
 {

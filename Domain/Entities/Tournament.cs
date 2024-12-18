@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -11,10 +6,9 @@ namespace Domain.Entities
     public class Tournament : Base
     {
         public string Name { get; set; } = string.Empty;
-        public int TeamsQuantity { get; set; }
+        public int MaxParticipants { get; set; }
         public DateTime StartDate { get; set; }
         public int ChampionId { get; set; }
-
         public virtual Team? Champion { get; }
 
     }
