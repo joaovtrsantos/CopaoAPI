@@ -1,20 +1,27 @@
 using Application.Interfaces;
+using Application.Models.Commands;
+using Application.Validators;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+var services = builder.Services;
 // Add services to the container.
 
+services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateTournamentCommand).Assembly));
+services.AddValidatorsFromAssembly(typeof(CreateTournamentCommandValidator).Assembly);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 // Add authorize button to add the bearer token in swagger to test the application
 builder.Services.AddDbContext<CopaoDbContext>();
+builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
 
 builder.Services.AddAuthorization();
 builder.Services.AddSwaggerGen(swagger =>

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data.Repositories
 {
-    public class TournamentRepository(CopaoDbContext copaoDbContext) : IBaseRepository<Tournament>
+    public class TournamentRepository(CopaoDbContext copaoDbContext) : ITournamentRepository
     {
         private readonly CopaoDbContext _context = copaoDbContext;
 

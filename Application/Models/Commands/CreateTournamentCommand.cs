@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.Common;
+using MediatR;
 
 namespace Application.Models.Commands
 {

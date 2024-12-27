@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,8 +22,9 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false),
-                    TeamsQuantity = table.Column<int>(type: "int", nullable: false),
+                    MaxParticipants = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ChampionId = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ChangeDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),

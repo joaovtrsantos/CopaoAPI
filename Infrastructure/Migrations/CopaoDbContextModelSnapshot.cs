@@ -100,15 +100,18 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("MaxParticipants")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("TeamsQuantity")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

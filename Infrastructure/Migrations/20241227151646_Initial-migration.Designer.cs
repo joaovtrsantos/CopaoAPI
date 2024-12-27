@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(CopaoDbContext))]
-    [Migration("20241204185027_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241227151646_Initial-migration")]
+    partial class Initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,15 +103,18 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("MaxParticipants")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("TeamsQuantity")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
