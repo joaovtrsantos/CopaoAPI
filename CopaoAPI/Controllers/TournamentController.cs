@@ -1,4 +1,5 @@
 ﻿using Application.Models.Commands;
+using Application.Models.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,5 +31,26 @@ namespace CopaoAPI.Controllers
                 ? NoContent()
                 : BadRequest(result.Errors);
         }
+
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetTournamentById([FromQuery] GetTournamentByIdQuery query)
+        {
+            var result = await _mediator.Send(query);
+
+            return result.IsSuccess
+                ? Ok(result.Value)
+                : BadRequest(result.Errors);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllTournaments([FromQuery] GetAllTournamentsQuery query)
+        {
+            var result = await _mediator.Send(query);
+
+            return result.IsSuccess
+                ? Ok(result.Value)
+                : BadRequest(result.Errors);
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Application.Models.Commands;
 using FluentValidation;
 using MediatR;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Application.Handlers.Commands
 {
@@ -23,10 +24,15 @@ namespace Application.Handlers.Commands
             if (tournament == null)
                 return Result<bool>.Failure(["Tournament not found"]);
 
-            tournament.Name = request.Name;
-            tournament.StartDate = request.StartDate;
-            tournament.EndDate = request.EndDate;
-            tournament.MaxParticipants = request.MaxParticipants;
+            if (request.MaxParticipants.HasValue) tournament.MaxParticipants = request.MaxParticipants.Value;
+
+            if (request.StartDate.HasValue) tournament.StartDate = request.StartDate.Value;
+
+            if (request.EndDate.HasValue) tournament.EndDate = request.EndDate.Value;
+
+            if (request.Name.IsNullOrEmpty()) tournament.Name = request.Name;
+
+            tournament.ChangeDate = DateTime.Now;
 
             try
             {
@@ -35,7 +41,7 @@ namespace Application.Handlers.Commands
             }
             catch (Exception ex)
             {
-                return Result<bool>.Failure(new List<string> { "Error updating tournament", ex.Message });
+                return Result<bool>.Failure(["Error updating tournament", ex.Message]);
             }
         }
     }
