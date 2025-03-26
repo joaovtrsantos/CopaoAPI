@@ -1,9 +1,8 @@
-﻿using Application.Common;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.Models.Commands
 {
-    public class UpdateTournamentCommand : IRequest<Result<bool>>
+    public class UpdateTournamentCommand : IRequest<bool>
     {
         public int Id { get; set; }
         public string? Name { get; set; } = string.Empty;

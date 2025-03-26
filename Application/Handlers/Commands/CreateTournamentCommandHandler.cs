@@ -1,25 +1,35 @@
-﻿using MediatR;
+﻿using Application.Interfaces;
+using Application.Models.Commands;
 using Domain.Entities;
 using FluentValidation;
-using Application.Interfaces;
-using Application.Models.Commands;
-using Application.Common;
+using MediatR;
+using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace Application.Features.Tournaments.Handlers
 {
     // Handler para criar torneio
     public class CreateTournamentCommandHandler(
         ITournamentRepository repository,
-        IValidator<CreateTournamentCommand> validator) : IRequestHandler<CreateTournamentCommand, Result<int>>
+        IValidator<CreateTournamentCommand> validator,
+        ILogger<CreateTournamentCommandHandler> logger) : IRequestHandler<CreateTournamentCommand, bool>
     {
         private readonly ITournamentRepository _repository = repository;
         private readonly IValidator<CreateTournamentCommand> _validator = validator;
+        private readonly ILogger<CreateTournamentCommandHandler> _logger = logger;
 
-        public async Task<Result<int>> Handle(CreateTournamentCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(CreateTournamentCommand request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation(@"[CreateTournamentCommandHandler] Tournament creation started {request}", new
+            {
+                request = JsonSerializer.Serialize(request)
+            });
+
             var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+            //TODO: STARTS HERE, TO START NEW LOGS FOR VALIDATION.
             if (!validationResult.IsValid)
-                return Result<int>.Failure(validationResult.Errors.Select(e => e.ErrorMessage).ToList());
+                return false;
+                //TODO: To test the return if doesnt validate
 
             var tournament = new Tournament
             {
@@ -32,11 +42,11 @@ namespace Application.Features.Tournaments.Handlers
             try
             {
                 var createdTournament = await _repository.AddAsync(tournament);
-                return Result<int>.Success(createdTournament.Id);
+                return true;
             }
             catch (Exception ex)
             {
-                return Result<int>.Failure(new List<string> { "Error creating tournament", ex.Message });
+                throw;
             }
         }
     }

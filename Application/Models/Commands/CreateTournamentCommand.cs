@@ -1,9 +1,8 @@
-﻿using Application.Common;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.Models.Commands
 {
-    public class CreateTournamentCommand : IRequest<Result<int>>
+    public class CreateTournamentCommand : IRequest<bool>
     {
         public string Name { get; set; } = string.Empty;
         public DateTime StartDate { get; set; }
